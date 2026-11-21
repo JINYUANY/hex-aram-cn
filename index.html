@@ -163,6 +163,10 @@ tr.selected .rank{box-shadow:inset 3px 0 #08785f}
 .trio-face .portrait,.trio-face .game-icon,.trio-face .symbol,.trio-face img{width:23px;height:23px;min-width:23px}
 
 .profile-mode #game-patch{display:none}.game-patch{margin:18px 0;padding:clamp(16px,3vw,26px);border:1px solid #c5d4cf;border-radius:12px;background:#fbfdfa;color:#193a3c}.game-head,.game-actions,.game-pages,.patch-list-heading,.pool-tabs,#patch-filters{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap}.game-head,.patch-list-heading{justify-content:space-between}.game-patch h2{margin:.15em 0;font-size:clamp(1.28rem,2.5vw,1.75rem)}.game-head p,.game-patch>p,.pool-caption p,.pool-meta{margin:.45em 0;color:#496264}.game-source{font-size:.79rem;font-weight:700;letter-spacing:.08em}.game-patch button,.game-pages button,.pool-tabs button,.pool-list button,.pool-search input{font:inherit;border:1px solid #afc2bd;border-radius:6px;padding:.42em .8em;background:#fff;color:#224744}.game-patch button,.game-pages button,.pool-tabs button,.pool-list button{cursor:pointer}.game-patch button:disabled,.game-pages button:disabled{opacity:.48;cursor:default}#game-sync,.pool-tabs [aria-pressed=true],#patch-filters [aria-pressed=true]{background:#205c55;color:#fff;border-color:#205c55}.game-actions a,.pool-link a,.pool-caption a{color:#195b58}.game-actions a{white-space:nowrap}.game-patch details{margin-top:12px}.game-patch details>summary{font-weight:650;cursor:pointer;padding:6px 0}.game-patch>#game-patch-check{font-size:.78rem;margin:10px 0 0}.game-pages{justify-content:flex-end;padding-top:12px;font-size:.87rem}.game-pages>span:first-child{margin-right:auto}.game-pages button{white-space:nowrap}.patch-list,.pool-list{list-style:none;margin:0;padding:0}.patch-list li,.pool-list li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid #d7e1dd}.patch-list li p,.pool-list li p{margin:4px 0;line-height:1.55}.patch-list small,.pool-caption small,.pool-list small{color:#536b67}.patch-class{font-size:.8rem;white-space:nowrap;border-radius:4px;padding:3px 7px;background:#e1e8e7}.patch-class.buff{background:#dbefdf;color:#226044}.patch-class.nerf{background:#f6e4de;color:#864536}.patch-class.new{background:#e2e8f4;color:#36547c}.patch-list-heading{margin:8px 0}#patch-filters,.pool-tabs{margin:13px 0}.pool-caption{background:#f3f7f3;border-left:3px solid #61867a;padding:12px 16px}.pool-list li{align-items:center}.pool-list li>div{flex:1}.pool-list .portrait{flex-shrink:0}.pool-search{display:flex;align-items:center;gap:12px;margin:14px 0;flex-wrap:wrap}.pool-empty{padding:20px 0}.pool-tabs button,.patch-chip{font-size:.88rem}.pool-link{padding-top:14px;border-top:1px solid #d7e1dd}@media(max-width:560px){.game-patch{padding:14px}.game-head{align-items:flex-start}.game-pages{gap:6px}.pool-list li{gap:6px}.pool-list li>button{font-size:.78rem}.game-actions{margin:4px 0}}
+
+.patch-tools{display:flex;align-items:center;flex-wrap:wrap;gap:.65rem;margin:14px 0}.patch-tools label{font-weight:600}.patch-tools input{flex:1 1 14rem;max-width:28rem;min-width:0;color:inherit;border:1px solid #afc2bd;border-radius:6px;padding:.45em .65em;font:inherit;background:#fff}.patch-tools span{font-size:.875rem;color:#496264}.subject-patch{margin:14px 0;padding:12px 15px;background:#edf5f1;border-left:3px solid #407364;border-radius:4px}.subject-patch h3{font-size:1rem;margin:0 0 6px}.subject-patch div{line-height:1.6}.subject-patch small{display:block;color:#496264}.subject-patch a{color:#20594f}.game-patch .hotfix-sources{margin-top:16px}
+
+.pool-search,.pool-tier{display:inline-flex;align-items:center;gap:.6rem;margin:12px 12px 12px 0}.pool-tier select{border:1px solid #afc2bd;border-radius:6px;background:#fff;color:#224744;font:inherit;padding:.42em .65em}
 </style><style>.release-center{margin:14px 0;color:var(--ink);background:white;border:1px solid var(--line);border-radius:10px;padding:11px 16px}
 .release-toolbar{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap}.release-toolbar strong,.release-toolbar a,.release-center summary{font-size:.92rem}
 .release-toolbar button{background:#f0f7f4;border:1px solid #9ebeb0;border-radius:6px;color:#13644e;padding:5px 13px;font-weight:600}
@@ -185,7 +189,7 @@ tr.selected .rank{box-shadow:inset 3px 0 #08785f}
 <div class="game-head"><div><p class="game-source">腾讯国服版本公告</p><h2 id="game-patch-title">海克斯大乱斗更新</h2><p id="game-patch-meta">正在读取公告版本…</p></div>
 <div class="game-actions"><a id="game-original" href="https://lol.qq.com/gicp/news/423/2/1334/1.html" target="_blank" rel="noopener">腾讯原文 ↗</a><button type="button" id="game-sync">检查并同步游戏数据</button></div></div>
 <div id="patch-filters" aria-label="按改动类型查看"></div>
-<details id="game-note-details"><summary id="game-note-toggle">查看改动详情</summary><div id="game-note-list"></div></details>
+<details id="game-note-details"><summary id="game-note-toggle">查看改动详情</summary><div class="patch-tools"><label for="patch-search">搜索公告</label><input type="search" id="patch-search" placeholder="英雄、海克斯、装备或改动数值"><button type="button" id="patch-reset" hidden>清除筛选</button><span id="patch-count" tabindex="-1" role="status"></span></div><div id="game-note-list"></div></details>
 <p id="game-patch-check"></p></section>
 <section id="source-strip" aria-label="两个数据源的发布状态"></section>
 <details id="sync-status" class="sync-panel">
@@ -1150,6 +1154,9 @@ async function collectGame(previous,poolURL,fetcher=fetch){
       if(!current.has(h.url) && o.hotfixes.some(link=>link.url===h.url))o.mayhem.hotfixDetails.push(h);
     }
   }
+  if(o.mayhem?.hotfixDetails){
+    o.mayhem={...o.mayhem,hotfixes:o.hotfixes,hotfixDetails:o.mayhem.hotfixDetails.filter(doc=>o.hotfixes.some(h=>h.url===doc.url))};
+  }
   o.poolPending=rules.status==='rejected';
   const prior=previous?.heroPool?.patch===o.samplePatch?previous.heroPool:null;
   o.heroPool=rules.status==='fulfilled' && rules.value && (!prior || Date.parse(rules.value.publishedAt)>=Date.parse(prior.publishedAt))?rules.value:prior;
@@ -1372,30 +1379,46 @@ function patchNumber(patch) {
 function json(value, options = {}) {
   return new Response(JSON.stringify(value), {headers: {'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...options}});
 }
-async function loadStored(bucket, kind) {
-  const local = entry(kind);
-  if (!bucket) return {state:local};
-  const path = kind === 'stats' ? 'snapshots/stats-v4' : 'snapshots/' + kind;
-  const object = await bucket.get(path);
-  if (!object) return {state:local};
-  const saved = await object.json();
-  if(kind==='official' && !Object.hasOwn(saved.value || {},'mayhem') && saved.value?.patch===local.value.patch && saved.value?.url===local.value.url){
-    saved.value={...local.value,...saved.value}; saved.tried=0;
-  }
-  const state = saved.tried >= local.tried && !(kind==='official' && patchNumber(saved.value.patch)<patchNumber(local.value.patch)) ? saved : local;
-  current.set(kind, state);
-  return {state, etag:object.etag};
+function isUsableSnapshot(kind,state,local){
+  if(!state || !Number.isFinite(state.tried) || !state.value)return false;
+  const v=state.value, baseline=local.value;
+  if(kind==='stats')return v.schema===baseline.schema && Number.isSafeInteger(v.seq) && v.seq>=baseline.seq &&
+    /^\d+\.\d+$/.test(v.patch) && patchNumber(v.patch)>=patchNumber(baseline.patch) &&
+    Number.isFinite(Date.parse(v.cutoff)) && Date.parse(v.cutoff)>=Date.parse(baseline.cutoff) &&
+    Array.isArray(v.heroes) && v.heroes.length>0 && Array.isArray(v.augments) && Array.isArray(v.regions) && Array.isArray(v.equipment?.catalog);
+  if(kind==='aramgg')return /^\d+\.\d+\.\d+$/.test(v.config?.version) &&
+    v.config.version.localeCompare(baseline.config.version,'en',{numeric:true})>=0 &&
+    (!v.catalog || Array.isArray(v.catalog.heroes));
+  if(!/^\d+\.\d+$/.test(v.patch) || patchNumber(v.patch)<patchNumber(baseline.patch) || !v.samplePatch ||
+      !Array.isArray(v.hotfixes) || !Number.isFinite(Date.parse(v.publishedAt)) || !Number.isFinite(Date.parse(v.checkedAt)))return false;
+  return v.patch!==baseline.patch || Date.parse(v.checkedAt)>=Date.parse(baseline.checkedAt);
 }
-async function sync(kind, env, manual=false) {
+async function loadStored(bucket, kind) {
+  const local=entry(kind);
+  if(!bucket)return {state:local};
+  const path=kind==='stats'?'snapshots/stats-v4':'snapshots/'+kind;
+  let object;
+  try{object=await bucket.get(path);}catch{return {state:local,unavailable:true};}
+  if(!object)return {state:local};
+  let saved;
+  try{saved=await object.json();}catch{return {state:local,etag:object.etag};}
+  if(!isUsableSnapshot(kind,saved,local))return {state:local,etag:object.etag};
+  if(kind==='official' && !Object.hasOwn(saved.value,'mayhem') && saved.value.patch===local.value.patch && saved.value.url===local.value.url){
+    saved.value={...local.value,...saved.value};saved.tried=0;
+  }
+  const state=saved.tried>=local.tried?saved:local;
+  current.set(kind,state);return {state,etag:object.etag};
+}
+async function sync(kind, env, manual=false, reconnect=false) {
   const bucket=env.BUCKET;
   let state = entry(kind);
   const now = Date.now();
-  const fresh = s => s.tried && now - s.tried < (manual ? 12000 : s.stale ? 60000 : pollMs);
+  const fresh = s => !(reconnect && env.PUBLIC_CHANNEL && s.stale) && s.tried && now - s.tried < (manual ? 12000 : s.stale ? 60000 : pollMs);
   if (fresh(state)) return state;
   if (inflight.has(kind)) return inflight.get(kind);
   const work = (async () => {
-    let etag;
-    if (bucket) ({state, etag} = await loadStored(bucket, kind));
+    let etag,unavailable;
+    if (bucket) ({state, etag,unavailable} = await loadStored(bucket, kind));
     if (fresh(state)) return state;
     let next;
     try {
@@ -1445,14 +1468,15 @@ async function sync(kind, env, manual=false) {
         next.reason=reason;
       }
     }
-    if (bucket) {
+    if (bucket && !unavailable) {
       const path = kind === 'stats' ? 'snapshots/stats-v4' : 'snapshots/' + kind;
-      const result = await bucket.put(path, JSON.stringify(next),
-        {onlyIf:etag ? {etagMatches:etag} : {etagDoesNotMatch:'*'}});
-      if (!result) {
-        const winner = await loadStored(bucket, kind);
-        return winner.state;
-      }
+      try {
+        const result=await bucket.put(path,JSON.stringify(next),{onlyIf:etag?{etagMatches:etag}:{etagDoesNotMatch:'*'}});
+        if(!result){
+          const winner=await loadStored(bucket,kind);
+          if(!winner.unavailable && winner.etag && isUsableSnapshot(kind,winner.state,next))return winner.state;
+        }
+      }catch{/* The verified result remains usable in memory when storage is unavailable. */}
     }
     current.set(kind, next);
     return next;
@@ -1475,7 +1499,7 @@ return {
     }
     if (path === '/api/official' || path === '/api/stats' || path === '/api/aramgg') {
       const kind = path.slice(5);
-      const state = await sync(kind, env, url.searchParams.has('check'));
+      const state = await sync(kind, env, url.searchParams.has('check'),url.searchParams.has('reconnect'));
       const unchanged = kind === 'stats' && String(state.value.seq) === url.searchParams.get('seq');
       return json({value:unchanged ? null : state.value, ...metadata(state)});
     }
@@ -2521,7 +2545,7 @@ function heroAugmentsCard(h) {
 }
 function qualityDescription(a) {
   const entry=currentAugmentDefinition(a), desc=entry?.description;
-  return '<p class="effect">'+esc(desc || '当前资料源尚未提供效果说明。')+'</p>'+
+  return subjectNotes('强化符文',a.name)+'<p class="effect">'+esc(desc || '当前资料源尚未提供效果说明。')+'</p>'+
     (entry?.descriptionNote?'<p class="detail-note">'+esc(entry.descriptionNote)+'</p>':'')+
     (a.referenceOnly?'<p class="detail-note">仅玩法资料 · 当前国服统计未收录。'+esc(entry?.sampleNote || '')+'</p>':'')+
     (desc?'<p class="detail-note">强化资料版本 '+esc(augmentBook.patch)+' · '+external(augmentBook.sources?.kiwi,'CommunityDragon 模式文件')+'。</p>':'');
@@ -2540,7 +2564,7 @@ function itemDetail(r) {
   };
   const holders=holderItemRows(r.id);
   return '<span class="eyebrow">装备详情</span><div class="feature">'+itemIcon(r)+'<div><h2>'+esc(r.name)+'</h2><small>'+esc(category)+' · ID '+esc(r.id)+'</small></div></div>'+
-    mini('结算持有率',pct(r.holdRate),'持有时胜率',pct(r.winRate))+
+    subjectNotes('装备',r.name)+mini('结算持有率',pct(r.holdRate),'持有时胜率',pct(r.winRate))+
     '<p class="detail-note">'+esc(scope)+' · '+count(r.games)+' 持有人次 / '+count(den)+' 装备样本人次'+(r.wins!=null?' · '+count(r.wins)+' 胜':'')+'<br>AramHex · '+metaLine(e)+'</p>'+
     (r.kind==='augmentReward'?'<p class="detail-note">强化关联物品仅展示持有统计。</p>':'')+
     '<h3>属性与效果'+(r.gold!=null?' · '+count(r.gold)+' 金币':'')+'</h3>'+
@@ -2602,7 +2626,7 @@ const siteTitle=document.title;
 let profile=null, profileHeaderHTML='';
 
 function profileUrl(id,section='augments',entry) {
-  const params=new URLSearchParams({hero:id});
+  const params=section==='pool'?poolParams(id):new URLSearchParams({hero:id});
   if(section!=='augments')params.set('view',section);
   if(entry)params.set('entry',entry);
   return '?'+params;
@@ -2630,7 +2654,7 @@ function renderProfile() {
     '<div class="profile-summary"><div class="profile-id">'+assetFor(hero)+'<div><small>'+esc(hero.title || championBook.byId?.[hero.id]?.title)+'</small>'+
     '<h1 id="profile-name" tabindex="-1">'+esc(hero.name)+'</h1><p>'+esc(championBook.byId?.[hero.id]?.roles?.join(' · ') || '')+'</p></div></div>'+
     '<div class="profile-totals"><dl>'+metric('英雄胜率',pct(hero.winRate))+metric(newer?'国服登场率':'出场占比',pct(hero.pickRate))+metric(newer?'样本场数':'出场人次',hero.games==null?'未披露':count(hero.games))+'</dl><p>'+source+'</p></div></div>'+
-    '<nav class="profile-nav" aria-label="英雄资料栏目">'+nav+'</nav>';
+    subjectNotes('英雄',hero.name)+'<nav class="profile-nav" aria-label="英雄资料栏目">'+nav+'</nav>';
   if(html!==profileHeaderHTML){$('champion-profile').innerHTML=html;profileHeaderHTML=html;}
   document.title=hero.name+' · '+profileSections[section]+' | 海克斯战局';
   const article=section==='pool' || section==='skills' || section==='builds';
@@ -2667,6 +2691,7 @@ function displayProfile(id,section,entry) {
   resetTab(tab);
   ui.scopeHero=id;
   const params=atlasLocation().searchParams;
+  if(section==='pool')restorePool(id,params);
   if(section==='targets'){
     ui.skillFilter=skillKeys.includes(params.get('slot'))?params.get('slot'):'linked';
     ui.skillBasis=Object.hasOwn(bindingTypes,params.get('basis'))?params.get('basis'):'';
@@ -2676,7 +2701,7 @@ function displayProfile(id,section,entry) {
   const index=rows.findIndex(r=>r.id===entry);
   if(index>=0){ui.page=Math.floor(index/PAGE_SIZE);ui.id=entry;}
   renderList();renderSummary();
-  if(index>=0 && section!=='items'){
+  if((index>=0 || (entry && section==='pool')) && section!=='items'){
     if(scopedHero()?.augmentCounts[entry]>0)openAugmentSheet(id,entry,(params.get('with') || '').split(','),params.get('inspect'),false);
     else if(section==='targets')openSkillReference(id,entry);
   }
@@ -2728,6 +2753,10 @@ function restoreLocation() {
     const requested=params.get('view') || (location.hash==='#hero-pairs'?'pairs':tab);
     const section=Object.hasOwn(profileSections,requested)?requested:'augments';
     displayProfile(id,section,params.get('entry') || params.get('id'));
+    if(section==='pool' && history.state?.poolReturn && !params.has('entry')){
+      $('detail').querySelector('[data-open-augment="'+history.state.poolReturn+'"]')?.focus({preventScroll:true});
+      window.scrollTo(0,history.state.listY || 0);return;
+    }
     const list=history.state?.heroList;
     if(list && !params.has('entry') && list.scopeHero===id && (section==='pairs'||section==='augments'||section==='targets') && (section!=='targets'||(list.skillFilter===ui.skillFilter && list.skillBasis===ui.skillBasis))){
       Object.assign(ui,list);$('search').value=ui.query;renderList();
@@ -2760,7 +2789,8 @@ const numberNames=['一','二','三','四','五','六'];
 function currentHero(){return stats.heroes.find(h=>h.id===sheet.heroId);}
 function gameSource(){return 'https://github.com/czgreat/aramhex-data/tree/data-v'+stats.seq+'/patches/'+stats.patch+'/normal';}
 function sheetUrl(){
-  const params=new URLSearchParams({hero:sheet.heroId,view:['targets','pairs'].includes(profile?.section)?profile.section:'augments',entry:sheet.ids[0]});
+  const params=profile?.section==='pool'?poolParams(sheet.heroId):new URLSearchParams({hero:sheet.heroId,view:['targets','pairs'].includes(profile?.section)?profile.section:'augments'});
+  params.set('entry',sheet.ids[0]);
   if(profile?.section==='targets'){if(targetSlot())params.set('slot',targetSlot());if(ui.skillBasis)params.set('basis',ui.skillBasis);}
   if(sheet.ids.length>1)params.set('with',sheet.ids.slice(1).join(','));
   if(sheet.active!==sheet.ids[0])params.set('inspect',sheet.active);
@@ -2772,7 +2802,7 @@ function openAugmentSheet(heroId,first,extras=[],inspect=null,push=true){
   const ids=[...new Set([first,...extras.filter(id=>augmentMap.has(id) && h.augmentCounts[id]>0)])].slice(0,6);
   sheet={heroId,patch:stats.patch,ids,active:ids.includes(inspect)?inspect:first,picking:false,query:'',rarity:'all',page:0,heroPage:0,gearPage:0,batch:null};
   if(push){
-    const saved={...history.state,heroList:{...ui},listY:window.scrollY};
+    const saved={...history.state,heroList:{...ui},poolReturn:profile?.section==='pool'?first:null,listY:window.scrollY};
     setAtlasRoute('replaceState',saved,'',profile?.section==='targets'?targetListUrl(heroId,targetSlot(),ui.skillBasis):profileUrl(heroId,profile?.section || 'augments'));
     setAtlasRoute('pushState',{...history.state,sheetOpen:true},'',sheetUrl());
   }else setAtlasRoute('replaceState',history.state,'',sheetUrl());
@@ -2783,12 +2813,13 @@ function openAugmentSheet(heroId,first,extras=[],inspect=null,push=true){
 }
 function dismissSheet(navigate=true){
   if(!sheet)return;
-  const state=history.state,hero=sheet.heroId;
+  const state=history.state,hero=sheet.heroId,first=sheet.ids[0];
   sheet=null;if($('augment-sheet').open)$('augment-sheet').close();
   if(!navigate)return;
   if(state?.sheetOpen){history.back();return;}
   setAtlasRoute('replaceState',state,'',profile?.section==='targets'?targetListUrl(hero,targetSlot(),ui.skillBasis):profileUrl(hero,profile?.section || 'augments'));
-  $('results').querySelector('tr.selected .hero-cell')?.focus({preventScroll:true});
+  const focus=profile?.section==='pool'?$('detail').querySelector('[data-open-augment="'+first+'"]') || $('pool-search'):$('results').querySelector('tr.selected .hero-cell');
+  focus?.focus({preventScroll:true});
 }
 function persistSheet(){setAtlasRoute('replaceState',history.state,'',sheetUrl());}
 function sheetStat(label,value,sub=''){
@@ -2804,9 +2835,8 @@ function renderSheet(){
   const entries=Object.entries(h.augmentCounts).filter(([,n])=>n>0),tier=entries.filter(([k])=>augmentMap.get(k)?.rarity===a.rarity);
   const diff=share-a.holdRate;
   $('sheet-context').textContent=h.name+' · 国服 '+sheet.patch+' · 强化详情';
-  const patchInfo=stats.patch==='16.23' && id==='3078'?'<p class="patch-fact"><b>26.23 改动</b>　额外伤害由 50～200 ＋ 50% 攻击力 ＋ 30% 法术强度调整为 50～175 ＋ 40% 攻击力 ＋ 25% 法术强度。'+external(patchNotes23,'Riot 版本公告')+'</p>':'';
   $('sheet-main').innerHTML='<div class="sheet-feature">'+augmentIcon(a)+'<div>'+label(a)+'<h2 id="sheet-title">'+esc(a.name)+'</h2></div></div>'+
-    qualityDescription(a)+skillTargetDetail(id,h.id)+patchInfo+'<dl class="sheet-metrics">'+sheetStat(h.name+'持有率',pct(share),count(games)+' / '+count(h.games)+' 次英雄出场')+
+    qualityDescription(a)+skillTargetDetail(id,h.id)+'<dl class="sheet-metrics">'+sheetStat(h.name+'持有率',pct(share),count(games)+' / '+count(h.games)+' 次英雄出场')+
     sheetStat('全体英雄持有率',pct(a.holdRate),count(a.games)+' / '+count(stats.heroParticipations)+' 玩家人次')+
     sheetStat('与全体相差',(diff>=0?'+':'')+diff.toFixed(2)+' 个百分点','同一批国服样本')+
     sheetStat('该英雄持有率排名','第 '+cardRank(entries.map(([,n])=>n),games)+' / '+entries.length,(rarityNames[a.rarity] || '')+'品质内第 '+cardRank(tier.map(([,n])=>n),games)+' / '+tier.length)+'</dl>'+
@@ -2992,34 +3022,99 @@ $('augment-sheet').addEventListener('cancel',e=>{e.preventDefault();dismissSheet
 </script>
 <script>'use strict';
 const patchKinds={all:'全部',buff:'增强',nerf:'削弱',adjust:'调整',new:'新增',fix:'修复',other:'其他'};
-const patchView={filter:'all',page:0,version:''};
-const poolView={hero:'',tab:'',query:'',page:0};
+const patchView={filter:'all',query:'',page:0,version:''};
+const poolView={hero:'',tab:'',query:'',rarity:'all',page:0};
+function poolParams(id){
+  const params=new URLSearchParams({hero:id,view:'pool'});
+  if(poolView.hero!==id)return params;
+  if(poolView.tab)params.set('group',poolView.tab);
+  if(poolView.query)params.set('q',poolView.query);
+  if(poolView.rarity!=='all')params.set('tier',poolView.rarity);
+  if(poolView.page)params.set('page',String(poolView.page+1));
+  return params;
+}
+function restorePool(id,params){
+  const group=params.get('group'),tier=params.get('tier'),page=Number(params.get('page'));
+  Object.assign(poolView,{hero:id,tab:['held','allowed','blocked'].includes(group)?group:'',
+    query:(params.get('q') || '').slice(0,100),rarity:['silver','gold','prismatic'].includes(tier)?tier:'all',
+    page:Number.isSafeInteger(page) && page>0?page-1:0});
+}
+function savePoolLocation(){
+  setAtlasRoute('replaceState',history.state,'','?'+poolParams(profile.id));
+}
 function pageButtons(page,total,key){
   const max=Math.max(1,Math.ceil(total/PAGE_SIZE));
   return '<div class="game-pages"><span>'+count(total)+' 项 · 每页 20 项</span><button type="button" data-'+key+'="-1" '+(page===0?'disabled':'')+'>上一页</button><span>'+(page+1)+' / '+max+'</span><button type="button" data-'+key+'="1" '+(page+1>=max?'disabled':'')+'>下一页</button></div>';
 }
+function patchEntries(o) {
+  const notes=o?.mayhem;
+  if(!notes || notes.patch!==o.patch || notes.samplePatch!==o.samplePatch || notes.url!==o.url)return [];
+  const rows=notes.entries.map(entry=>({...entry,url:o.url,publishedAt:o.publishedAt,hotfix:false}));
+  for(const doc of notes.hotfixDetails || []){
+    if(o.hotfixes.some(h=>h.url===doc.url))rows.push(...doc.entries.map(entry=>({...entry,url:doc.url,publishedAt:doc.publishedAt,hotfix:true})));
+  }
+  return rows;
+}
+function searchText(s){return String(s ?? '').normalize('NFKC').toLocaleLowerCase().replace(/\s+/gu,'');}
+function filterPatchEntries(rows,kind,query) {
+  const terms=query.trim().split(/\s+/u).filter(Boolean).map(searchText);
+  return rows.filter(e=>{
+    if(kind!=='all' && kind!==e.kind)return false;
+    const fields=[e.name,e.category,...e.details,e.hotfix?'热修':'主公告'].map(searchText);
+    return terms.every(term=>fields.some(s=>s.includes(term)));
+  });
+}
+function patchSubjectBody(category,name){
+  if(!official || !name)return '';
+  const key=searchText(name);
+  const matches=patchEntries(official).filter(e=>{
+    if(searchText(e.name)!==key)return false;
+    if(e.category===category)return true;
+    if(!/修复/i.test(e.category))return false;
+    const groups=[
+      ['英雄',stats.heroes],['装备',stats.equipment?.catalog || []],
+      ['强化符文',Object.values(augmentBook.byId || {}).concat(stats.augments)]
+    ].filter(([,group])=>group.some(x=>searchText(x.name)===key));
+    return groups.length===1 && groups[0][0]===category;
+  });
+  return matches.length?'<div class="subject-patch"><h3>国服 '+esc(official.patch)+' · '+esc(name)+'改动</h3>'+
+    matches.map(e=>'<div><b>'+esc(patchKinds[e.kind])+'</b> '+e.details.map(esc).join('<br>')+'<small>'+
+      external(e.url,e.hotfix?'腾讯热修原文':'腾讯版本公告')+' · '+esc(date(e.publishedAt))+'（北京时间）</small></div>').join('')+'</div>':'';
+}
+function subjectNotes(category,name){
+  return '<div data-note-category="'+esc(category)+'" data-note-name="'+esc(name)+'">'+patchSubjectBody(category,name)+'</div>';
+}
+function refreshSubjectNotes(){
+  document.querySelectorAll('[data-note-category]').forEach(el=>{
+    const body=patchSubjectBody(el.dataset.noteCategory,el.dataset.noteName);
+    if(el.innerHTML!==body)el.innerHTML=body;
+  });
+}
 function renderGameNotes(){
   if(!official || !stats)return;
-  const o=official,notes=o.mayhem?.url===o.url && o.mayhem?.patch===o.patch?o.mayhem:null;
-  if(patchView.version!==o.patch){patchView.version=o.patch;patchView.filter='all';patchView.page=0;}
-  const entries=notes?.entries || [];
+  const o=official, entries=patchEntries(o);
+  if(patchView.version!==o.patch){patchView.version=o.patch;patchView.page=0;}
   $('game-patch-title').textContent=o.patch+' 海克斯大乱斗更新';
   const status=health.official.stale?'本次公告未能核实最新状态。':'';
   const samplePatch=leadingGG()?gg.catalog.patch:stats.patch;
   const sampleLabel=samplePatch===o.samplePatch?'国服英雄榜已对齐':'当前英雄榜 '+samplePatch;
   $('game-patch-meta').textContent='腾讯国服 · '+date(o.publishedAt)+' 发布 · 客户端 '+o.samplePatch+' · '+sampleLabel;
   $('game-patch-check').textContent=status+' 腾讯公告最近成功采集 '+(o.checkedAt?date(o.checkedAt):'尚无记录')+'（北京时间）';
-  const quick=['buff','nerf','adjust','new','fix','other'].map(k=>[k,entries.filter(e=>e.kind===k).length]).filter(([,n])=>n);
-  const badges=quick.map(([k,n])=>'<button type="button" class="patch-chip '+k+'" data-patch-filter="'+k+'" aria-pressed="'+(patchView.filter===k)+'">'+patchKinds[k]+' <b>'+n+'</b></button>').join('');
   const chips=$('patch-filters');
+  const badges=Object.entries(patchKinds).map(([key,name])=>{
+    const total=key==='all'?entries.length:entries.filter(e=>e.kind===key).length;
+    return total || key===patchView.filter?'<button type="button" class="patch-chip '+key+'" data-patch-filter="'+key+'" aria-pressed="'+(patchView.filter===key)+'">'+name+' <b>'+total+'</b></button>':'';
+  }).join('');
   if(chips.innerHTML!==badges)chips.innerHTML=badges;
-  const filtered=entries.filter(e=>patchView.filter==='all' || e.kind===patchView.filter);
+  const filtered=filterPatchEntries(entries,patchView.filter,patchView.query);
   patchView.page=Math.max(0,Math.min(patchView.page,Math.ceil(filtered.length/PAGE_SIZE)-1));
-  const rows=filtered.slice(patchView.page*PAGE_SIZE,(patchView.page+1)*PAGE_SIZE).map(e=>'<li><span class="patch-class '+esc(e.kind)+'">'+patchKinds[e.kind]+'</span><div><strong>'+esc(e.name)+'</strong> <small>'+esc(e.category)+'</small>'+e.details.map(s=>'<p>'+esc(s)+'</p>').join('')+'<small>分类依据 · '+esc(e.basis)+'</small></div></li>').join('');
-  let body=(o.notesPending?'<p>本次正文解析未完成，可查看腾讯原文。</p>':'')+(entries.length?
-    '<div class="patch-list-heading"><b>'+patchKinds[patchView.filter]+' · '+filtered.length+' 条</b><button type="button" data-patch-filter="all">查看全部</button></div><ul class="patch-list">'+rows+'</ul>'+pageButtons(patchView.page,filtered.length,'patch-page'):
-    '<p>本版暂未取得可核实的模式改动条目。你可以直接查阅腾讯公告。</p>');
-  if(o.hotfixes?.length)body+='<h3>同期国服热修公告</h3>'+o.hotfixes.map(h=>'<p>'+external(h.url,h.title)+' · '+esc(date(h.publishedAt))+'</p>'+((notes?.hotfixDetails || []).find(item=>item.url===h.url)?.entries || []).map(e=>'<div class="hotfix-entry"><strong>'+esc(patchKinds[e.kind] || '调整')+' · '+esc(e.name)+'</strong><p>'+e.details.map(esc).join('<br>')+'</p></div>').join('')).join('');
+  const rows=filtered.slice(patchView.page*PAGE_SIZE,(patchView.page+1)*PAGE_SIZE).map(e=>'<li><span class="patch-class '+esc(e.kind)+'">'+esc(patchKinds[e.kind])+'</span><div><strong>'+esc(e.name)+'</strong> <small>'+esc(e.category)+'</small>'+e.details.map(s=>'<p>'+esc(s)+'</p>').join('')+'<small>分类依据 · '+esc(e.basis)+(e.hotfix?' · '+external(e.url,'腾讯热修')+' · '+esc(date(e.publishedAt)):'')+'</small></div></li>').join('');
+  $('patch-count').textContent='查到 '+filtered.length+' 条，共 '+entries.length+' 条';
+  $('patch-reset').hidden=!patchView.query && patchView.filter==='all';
+  let body=o.notesPending?'<p>本次正文解析未完成，可查看腾讯原文。</p>':'';
+  if(rows)body+='<ul class="patch-list">'+rows+'</ul>'+pageButtons(patchView.page,filtered.length,'patch-page');
+  else body+='<p>'+(!entries.length?'本版暂未取得可核实的模式改动条目，可查阅腾讯原文。':'没有匹配的改动。可更换关键词，或清除筛选查看本版全部改动。')+'</p>';
+  if(o.hotfixes?.length)body+='<details class="hotfix-sources"><summary>本期国服热修原文（'+o.hotfixes.length+' 篇）</summary>'+o.hotfixes.map(h=>'<p>'+external(h.url,h.title)+' · '+esc(date(h.publishedAt))+'</p>').join('')+'</details>';
   const target=$('game-note-list');if(target.innerHTML!==body)target.innerHTML=body;
   $('game-note-toggle').textContent='查看改动详情'+(entries.length?'（'+entries.length+' 条）':'');
   $('game-original').href=o.url;
@@ -3029,7 +3124,8 @@ function renderPool(hero,sample){
   const pool=feed?.heroes?.[hero.id];
   const allowed=pool?.rows.filter(r=>r.state==='allowed') || [],blocked=pool?.rows.filter(r=>r.state==='blocked') || [];
   const holds=Object.entries(sample?.augmentCounts || {}).filter(([,n])=>n>0).sort((a,b)=>b[1]-a[1]);
-  if(poolView.hero!==hero.id){Object.assign(poolView,{hero:hero.id,query:'',page:0,tab:allowed.length?'allowed':'held'});}
+  if(poolView.hero!==hero.id)restorePool(hero.id,new URLSearchParams());
+  if(!poolView.tab)poolView.tab=allowed.length?'allowed':'held';
   const tabs={allowed:['已证实可选',allowed.length],held:['结算持有记录',holds.length],blocked:['明确禁选',blocked.length]};
   const tab=poolView.tab;
   const caption=pool?.complete?'来源已发布该英雄的完整供选表。':pool?'来源已发布部分逐条规则，其余强化供选状态待核实。':'本版尚无该英雄的完整供选表，也未取得逐条供选规则。';
@@ -3041,42 +3137,55 @@ function renderPool(hero,sample){
   const sameBook=tab==='held' || augmentBook.patch===patch;
   const prepared=rows.map(r=>{const a=augmentBook.byId?.[r.id] || augmentMap.get(r.id) || {};
     return {...r,a:{...a,id:r.id,name:r.rule?.name || a.name || '强化 '+r.id,rarity:a.rarity || 'unknown'}};})
-    .filter(r=>(r.a.name+' '+r.id+' '+(r.rule?.detail || '')).toLowerCase().includes(poolView.query.trim().toLowerCase()));
+     .filter(r=>(poolView.rarity==='all' || r.a.rarity===poolView.rarity) &&
+      [r.a.name,r.id,r.rule?.detail].some(s=>searchText(s).includes(searchText(poolView.query))));
   poolView.page=Math.max(0,Math.min(poolView.page,Math.ceil(prepared.length/PAGE_SIZE)-1));
   const cards=prepared.slice(poolView.page*PAGE_SIZE,(poolView.page+1)*PAGE_SIZE).map(({id,n,a,rule})=>
     '<li>'+(rule?.icon?imageFallback(rule.icon,a.name.slice(0,1)):augmentIcon(a))+'<div><strong>'+esc(a.name)+'</strong> '+(a.rarity!=='unknown'?label(a):'')+
     (rule?'<p>'+esc(rule.detail)+'</p>'+(!sameBook && !rule.name?'<small>名称参考 '+esc(stats.patch)+' 图鉴 · ID '+esc(id)+'</small><br>':'')+'<small>'+external(rule.source.url,rule.source.name)+'</small>':'<p>'+count(n)+' 持有人次 · 英雄持有率 '+pct(n/sample.games*100)+'</p>')+
     '</div>'+(n?'<button type="button" data-open-augment="'+id+'">强化详情</button>':'')+'</li>').join('');
-  const empty=poolView.query?'没有匹配的强化。':tab==='held'?'这个样本中尚无该英雄的结算持有记录。':tab==='allowed'?'尚无可列出的已证实可选条目。':'尚无来源明确指出本版禁选的条目。';
+  const empty=poolView.query || poolView.rarity!=='all'?'没有匹配的强化。':tab==='held'?'这个样本中尚无该英雄的结算持有记录。':tab==='allowed'?'尚无可列出的已证实可选条目。':'尚无来源明确指出本版禁选的条目。';
   return summary+'<div class="pool-tabs">'+Object.entries(tabs).map(([key,[name,total]])=>'<button type="button" data-pool-tab="'+key+'" aria-pressed="'+(tab===key)+'">'+name+(key==='held' || total?' '+count(total):'')+'</button>').join('')+'</div>'+
     '<p class="pool-meta">'+(tab==='held'?'AramHex 国服普通模式 · '+metaLine(stats)+' · '+esc(hero.name)+'出场 '+count(sample?.games)+' 人次。结算持有包括转化、赠予等获取方式。':('供选规则按客户端 '+esc(patch)+' 核对。'))+'</p>'+
-    '<label class="pool-search">搜索本栏强化 <input type="search" id="pool-search" value="'+esc(poolView.query)+'" placeholder="名称或 ID"></label>'+
+    '<label class="pool-search">搜索本栏强化 <input type="search" id="pool-search" value="'+esc(poolView.query)+'" maxlength="100" placeholder="名称或 ID"></label><label class="pool-tier">品质 <select id="pool-rarity">'+
+    Object.entries({all:'全部品质',silver:'白银',gold:'黄金',prismatic:'棱彩'}).map(([k,v])=>'<option value="'+k+'" '+(poolView.rarity===k?'selected':'')+'>'+v+'</option>').join('')+'</select></label>'+
     '<div id="pool-results">'+(cards?'<ul class="pool-list">'+cards+'</ul>':'<p class="pool-empty">'+empty+'</p>')+pageButtons(poolView.page,prepared.length,'pool-page')+'</div>'+
     '<p class="pool-link"><a href="?tab=augments" data-global-augments>查看全局海克斯图鉴 →</a></p>';
 }
 document.addEventListener('click',e=>{
   const t=e.target.closest('button,a');if(!t || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)return;
   if(t.id==='game-sync'){void refresh(true);return;}
+  if(t.id==='patch-reset'){
+    patchView.query='';patchView.filter='all';patchView.page=0;$('patch-search').value='';renderGameNotes();$('patch-search').focus();
+  }
   if(t.dataset.patchFilter || t.dataset.patchPage){
     if(t.dataset.patchFilter){patchView.filter=t.dataset.patchFilter;patchView.page=0;}else patchView.page+=Number(t.dataset.patchPage);
     $('game-note-details').open=true;renderGameNotes();
-    if(t.dataset.patchPage)$('game-note-toggle').focus();
+    if(t.dataset.patchPage)$('patch-count').focus();
+    else $('patch-filters').querySelector('[aria-pressed="true"]')?.focus({preventScroll:true});
   }
   if(t.dataset.poolTab || t.dataset.poolPage){
-    if(t.dataset.poolTab){poolView.tab=t.dataset.poolTab;poolView.page=0;poolView.query='';}else poolView.page+=Number(t.dataset.poolPage);
-    renderProfile();$('detail').querySelector('[data-pool-tab="'+poolView.tab+'"]')?.focus({preventScroll:true});
+    if(t.dataset.poolTab){poolView.tab=t.dataset.poolTab;poolView.page=0;poolView.query='';poolView.rarity='all';}else poolView.page+=Number(t.dataset.poolPage);
+    renderProfile();savePoolLocation();$('detail').querySelector('[data-pool-tab="'+poolView.tab+'"]')?.focus({preventScroll:true});
   }
   if(t.hasAttribute('data-global-augments')){
     e.preventDefault();setAtlasRoute('pushState',null,'','?tab=augments');restoreLocation();
   }
 });
 document.addEventListener('input',e=>{
+  if(e.target.id==='patch-search'){patchView.query=e.target.value;patchView.page=0;renderGameNotes();return;}
   if(e.target.id!=='pool-search')return;
   poolView.query=e.target.value;poolView.page=0;
   const {hero,sample}=heroRecord(profile.id);
   const template=document.createElement('template');
   template.innerHTML=renderPool(hero,sample);
   $('pool-results').replaceChildren(...template.content.querySelector('#pool-results').childNodes);
+  savePoolLocation();
+});
+
+document.addEventListener('change',e=>{
+  if(e.target.id!=='pool-rarity')return;
+  poolView.rarity=e.target.value;poolView.page=0;renderProfile();savePoolLocation();$('pool-rarity').focus({preventScroll:true});
 });
 </script>
 <script>'use strict';
@@ -3134,6 +3243,7 @@ function collapse(lines, limit, name) {
 }
 function renderStatus() {
   const notes = [];
+  if(navigator.onLine===false)notes.push('当前离线，正在显示已保存的数据。恢复联网后会自动核对。');
   const latestPatch=leadingGG()?gg.catalog.patch:stats?.patch;
   if (official && latestPatch && official.samplePatch !== latestPatch)
     notes.push('腾讯已公告 ' + official.patch + '，最新国服英雄样本为 ' + latestPatch + '。各表按采样版本展示。');
@@ -3357,7 +3467,7 @@ function renderDetail(r) {
   }else if(b)body+=gearDetail(r);
   else {
     const h=ggHeroesActive()?stats.heroes.find(x=>x.id===r.id):r;
-    body+=heroPreviewNav(r)+'<button class="preview-return" data-return-hero>返回已选英雄</button>'+mini('英雄胜率',pct(r.winRate),ggHeroesActive()?'国服登场率':'出场占比',pct(r.pickRate));
+    body+=heroPreviewNav(r)+subjectNotes('英雄',r.name)+'<button class="preview-return" data-return-hero>返回已选英雄</button>'+mini('英雄胜率',pct(r.winRate),ggHeroesActive()?'国服登场率':'出场占比',pct(r.pickRate));
     if(ggHeroesActive()) body+='<p class="detail-note">ARAMGG · 腾讯国服 '+esc(gg.catalog.patch)+' · 样本场数 '+(r.games==null?'未披露':count(r.games))+'<br>统计日期 '+esc(ggDate(r.date))+' · 数据截止未披露</p>';
     else body+='<p class="detail-note">'+count(r.games)+' 次出场 · '+count(r.wins)+' 胜 / '+count(r.games-r.wins)+' 负<br>每百场出场 '+r.appearancesPer100Matches.toFixed(2)+' 次 · AramHex 国服 '+esc(stats.patch)+'<br>数据截至 '+date(stats.cutoff)+'（北京时间）</p>';
     body+='<a class="profile-cta" href="'+esc(profileUrl(r.id))+'" data-profile="'+esc(r.id)+'">查看'+esc(r.name)+'的海克斯库与完整资料</a><a class="slink" href="'+esc(profileUrl(r.id,'pool'))+'" data-profile="'+esc(r.id)+'" data-view="pool">查本英雄可选海克斯与实战持有记录 →</a>'+championMini(r)+(h?heroAugmentsCard(h):'')+pairPanel();
@@ -3504,8 +3614,9 @@ async function read(path) {
   if(!response.ok) throw new Error(String(response.status));
   return response.json();
 }
-async function refresh(manual=false) {
-  if(busy) return;
+let pendingReconnect=false;
+async function refresh(manual=false,reconnect=false) {
+  if(busy){if(reconnect)pendingReconnect=true;return;}
   $('game-sync').disabled=true;$('game-sync').textContent='正在核对游戏数据…';
   busy=true; $('check-sources').disabled=true;$('check-sources').textContent='正在检查';$('refresh').disabled=true; $('refresh').querySelector('b').textContent='同步中';
   try {
@@ -3519,7 +3630,8 @@ async function refresh(manual=false) {
       try {
         const params=new URLSearchParams();
         if(kind==='stats')params.set('seq',stats.seq);
-        if(manual)params.set('check','1');
+        if(manual || reconnect)params.set('check','1');
+        if(reconnect)params.set('reconnect','1');
         const data=await read('/api/'+kind+'?'+params);
         health[kind]={checked:data.checked,stale:data.stale};
         if(kind==='stats' && data.value && data.value.seq>stats.seq) {
@@ -3532,7 +3644,13 @@ async function refresh(manual=false) {
           }
         }
         if(kind==='stats'){if(manual)await refreshGameCatalogs(true);else void refreshGameCatalogs();}
-        if(kind==='official' && data.value){official=data.value;if(profile?.section==='pool')renderProfile();}
+        if(kind==='official' && data.value){
+          const before=official;official=data.value;
+          if(profile?.section==='pool' && (before?.patch!==official.patch || before?.poolPending!==official.poolPending ||
+             JSON.stringify(before?.heroPool?.heroes?.[profile.id])!==JSON.stringify(official.heroPool?.heroes?.[profile.id]) ||
+             before?.heroPool?.publishedAt!==official.heroPool?.publishedAt))renderProfile();
+          refreshSubjectNotes();
+        }
         if(kind==='aramgg' && data.value) {
           const wasGG=ggHeroesActive(), previous=gg;gg=data.value;
           if(wasGG!==ggHeroesActive() && ui.tab==='heroes') {ui.sort='winRate';ui.direction=-1;ui.minGames=0;}
@@ -3550,7 +3668,9 @@ async function refresh(manual=false) {
     if(manual && $('status').hidden) {$('status').textContent='已核对腾讯公告及两家数据源的发布状态。';$('status').hidden=false;}
   } catch {
     $('status').textContent='查询数据暂未载入，请点击「同步数据」重试。';$('status').hidden=false;
-  } finally {busy=false;$('game-sync').disabled=false;$('game-sync').textContent='检查并同步游戏数据';$('check-sources').disabled=false;$('check-sources').textContent='检查更新';$('refresh').disabled=false;$('refresh').querySelector('b').textContent='同步数据';}
+  } finally {busy=false;$('game-sync').disabled=false;$('game-sync').textContent='检查并同步游戏数据';$('check-sources').disabled=false;$('check-sources').textContent='检查更新';$('refresh').disabled=false;$('refresh').querySelector('b').textContent='同步数据';
+    if(pendingReconnect){pendingReconnect=false;if(navigator.onLine!==false)void refresh(false,true);}
+  }
 }
 function openSyncAnchor(){if(location.hash==='#sync-status')$('sync-status').open=true;}
 openSyncAnchor();
@@ -3566,7 +3686,8 @@ const localCatalogs=Promise.allSettled([
 ]);
 refresh();
 setInterval(()=>{if(!document.hidden)refresh();},300000);
-window.addEventListener('online',()=>refresh(true));
+window.addEventListener('online',()=>refresh(false,true));
+window.addEventListener('offline',()=>{if(stats)renderStatus();});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
 </script><script>// Updates open the project's public HTTPS page. The local file is never overwritten.
 function showReleaseNotes(text){
@@ -3617,9 +3738,10 @@ function startReleaseCheck(release,bundledNotes){
       const response=await fetch(url,{credentials:'omit',cache:'no-store',redirect:'error',referrerPolicy:'no-referrer',signal:AbortSignal.timeout(8000)});
       if(!response.ok)throw new Error('unavailable');
       const published=await response.json();
-      if(published.project!=='hex-aram-cn' || !/^[a-f0-9]{64}$/.test(published.build) || !Number.isSafeInteger(published.builtAt))throw new Error('invalid release');
+      if(published.project!=='hex-aram-cn' || !/^\d+\.\d+\.\d+$/.test(published.version) || !/^[a-f0-9]{64}$/.test(published.build) || !Number.isSafeInteger(published.builtAt))throw new Error('invalid release');
       if(published.build===release.build){status.textContent='已是最新公开版 v'+release.version;return;}
-      if(published.builtAt<=release.builtAt){status.textContent='当前副本较新，等待公开版发布';return;}
+      const byVersion=published.version.localeCompare(release.version,'en',{numeric:true});
+      if(byVersion<0 || (byVersion===0 && published.builtAt<=release.builtAt)){status.textContent='当前副本较新，等待公开版发布';return;}
       const next=new URL(site);
       next.searchParams.set('v',published.build);
       next.hash=location.hash || (location.search.startsWith('?hero=') || location.search.startsWith('?tab=')?'#'+location.search:'');
@@ -3638,4 +3760,4 @@ function startReleaseCheck(release,bundledNotes){
   void check();
 }
 
-startReleaseCheck({"project":"hex-aram-cn","version":"1.2.0","build":"b912e99c4f3a213c89da1b85a516db35321f364fb96705e88a0b2fcae1db436e","builtAt":1795247900633},"# 海克斯战局更新公告\n\n## 1.2.0 · 2026-11-21\n\n- 首页新增腾讯国服海克斯大乱斗改动，支持按增强、削弱、新增、调整和修复查询。26.23 版收录 40 条。\n- 英雄资料新增「本英雄可选海克斯」，可分别查看有出处的供选规则、明确禁选条目和 AramHex 实战持有人次，并跳转全局图鉴。\n- 在线版与下载版可联网检查并同步游戏数据。新增云端定时采集、同版本公告修订追踪和有授权时的英雄榜与供选源接入口。\n\n## 1.1.0 · 2026-11-21\n\n- 首页和英雄页增加「检查新版」，可核对当前程序版本、打开在线版并下载最新离线包。\n- 新增站内更新公告；维护者可以直接在 GitHub 修改本文件。已经打开的页面会在下一次成功检查时读取公告。\n- 项目首页加入图文教程，演示英雄排名、技能强化、海克斯搭配和版本检查。\n\n## 1.0.0 · 2026-11-21\n\n- 发布国服海克斯大乱斗免安装图鉴，提供在线查询和可直接分享的离线 ZIP。\n- 收录英雄、技能、海克斯与装备资料，统计明细保留来源、版本、场数和截止时间。\n- 下载版可以检查更新，发现新版后在浏览器中打开最新公开版。\n");</script></body></html>
+startReleaseCheck({"project":"hex-aram-cn","version":"1.2.1","build":"52470e201812c5fa8e264b4989444df15a308a323a5e78f89aa0fd8b4b008b42","builtAt":1795249514315},"# 海克斯战局更新公告\n\n## 1.2.1 · 2026-11-21\n\n- 公告支持按英雄、海克斯、装备或数值搜索。英雄、强化与装备详情可直接查看对应的腾讯改动和可核实的热修，保留原文与发布时间。\n- 本英雄可选海克斯增加品质筛选。搜索、栏目、品质和页码可随浏览器地址分享，从详情返回时可继续浏览原来的位置。\n- 恢复联网后会重试离线时失败的来源。个别缓存损坏时可以重新获取该项数据，程序版本检查也能识别稍后构建的旧版。\n\n## 1.2.0 · 2026-11-21\n\n- 首页新增腾讯国服海克斯大乱斗改动，支持按增强、削弱、新增、调整和修复查询。26.23 版收录 40 条。\n- 英雄资料新增「本英雄可选海克斯」，可分别查看有出处的供选规则、明确禁选条目和 AramHex 实战持有人次，并跳转全局图鉴。\n- 在线版与下载版可联网检查并同步游戏数据。新增云端定时采集、同版本公告修订追踪和有授权时的英雄榜与供选源接入口。\n\n## 1.1.0 · 2026-11-21\n\n- 首页和英雄页增加「检查新版」，可核对当前程序版本、打开在线版并下载最新离线包。\n- 新增站内更新公告；维护者可以直接在 GitHub 修改本文件。已经打开的页面会在下一次成功检查时读取公告。\n- 项目首页加入图文教程，演示英雄排名、技能强化、海克斯搭配和版本检查。\n\n## 1.0.0 · 2026-11-21\n\n- 发布国服海克斯大乱斗免安装图鉴，提供在线查询和可直接分享的离线 ZIP。\n- 收录英雄、技能、海克斯与装备资料，统计明细保留来源、版本、场数和截止时间。\n- 下载版可以检查更新，发现新版后在浏览器中打开最新公开版。\n");</script></body></html>
