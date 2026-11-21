@@ -161,10 +161,20 @@ tr.selected .rank{box-shadow:inset 3px 0 #08785f}
 #sheet-trios{margin:0 0 16px;padding:12px 16px;border:1px solid var(--line);border-radius:8px}
 #sheet-trios[hidden]{display:none}.trio-face{display:inline-flex;align-items:center;gap:4px;vertical-align:middle}
 .trio-face .portrait,.trio-face .game-icon,.trio-face .symbol,.trio-face img{width:23px;height:23px;min-width:23px}
+</style><style>.release-center{margin:14px 0;color:var(--ink);background:white;border:1px solid var(--line);border-radius:10px;padding:11px 16px}
+.release-toolbar{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap}.release-toolbar strong,.release-toolbar a,.release-center summary{font-size:.92rem}
+.release-toolbar button{background:#f0f7f4;border:1px solid #9ebeb0;border-radius:6px;color:#13644e;padding:5px 13px;font-weight:600}
+.release-center a{color:var(--teal);text-decoration:underline;text-underline-offset:2px}
+#release-check-status{font-size:.87rem;color:var(--muted)}.release-center details{border-top:1px solid var(--line);padding-top:8px;margin-top:9px}
+.release-center summary{cursor:pointer;font-weight:650}.release-center h3{font-size:1rem;margin:12px 0 5px}.release-center ul{padding-left:1.35em;line-height:1.65;margin:4px 0 8px}.release-center p{font-size:.87rem}
 </style></head>
 <body>
 <header class="mast"><div class="wrap mast-inner"><a href="#top" class="brand"><i class="mark"></i>海克斯战局</a><span class="division"></span><span class="subbrand">国服数据图鉴</span><div class="mast-right"><a href="#patch" id="open-news">版本公告</a><button id="refresh" class="refresh"><span aria-hidden="true">⟳</span> <b>同步数据</b></button></div></div></header>
 <main class="wrap" id="top">
+<section class="release-center" aria-label="程序版本与更新公告">
+<div class="release-toolbar"><strong>图鉴 <span id="release-number"></span></strong><button id="release-check" type="button">检查新版</button><a href="https://github.com/JINYUANY/hex-aram-cn/raw/refs/heads/main/hex-aram-cn.zip">下载最新 ZIP</a><span id="release-check-status" role="status">正在核对公开版…</span></div>
+<details id="updates"><summary>更新公告</summary><div id="release-notes"></div><p><a href="https://github.com/JINYUANY/hex-aram-cn/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">查看完整公告记录</a></p></details>
+</section>
 <section class="banner"><div class="hero-copy"><div class="tinyline"><span class="patch" id="banner-patch">PATCH</span><span>国服 · 海克斯大乱斗</span></div><h1>战局数据图鉴</h1><p>免安装下载版 · 离线可查，联网时检查公开数据。</p></div></section>
 <div id="status" class="message" role="status" hidden></div>
 <section class="measures" aria-label="样本概览">
@@ -172,7 +182,7 @@ tr.selected .rank{box-shadow:inset 3px 0 #08785f}
 <section id="source-strip" aria-label="两个数据源的发布状态"></section>
 <details id="sync-status" class="sync-panel">
 <summary><strong>数据同步与 API</strong><span id="sync-summary">查看来源与更新时间</span></summary>
-<div class="sync-content"><p>程序版本 <code id="release-number"></code> · <span id="release-check-status" role="status">正在核对公开版…</span> · <button id="release-check" type="button">检查程序更新</button> · <a href="https://jinyuany.github.io/hex-aram-cn/">打开在线版</a></p><div class="sync-heading"><p>文件打开时每 5 分钟检查公开来源；离线或来源限制浏览器访问时，保留已取得的数据。5 分钟内可复用最近结果。以下均为北京时间。</p><button type="button" id="check-sources">检查更新</button></div>
+<div class="sync-content"><div class="sync-heading"><p>文件打开时每 5 分钟检查公开来源；离线或来源限制浏览器访问时，保留已取得的数据。5 分钟内可复用最近结果。以下均为北京时间。</p><button type="button" id="check-sources">检查更新</button></div>
 <div id="sync-sources" aria-label="各来源同步记录"><p>正在读取最近的核对记录…</p></div>
 <details class="access-guide"><summary>哪些数据需要密钥？</summary>
 <dl><dt>免密钥可查</dt><dd>腾讯版本公告、AramHex 普通模式样本、英雄胜率与出场、海克斯持有率、普通装备统计和技能图鉴。</dd>
@@ -2745,17 +2755,48 @@ refresh();
 setInterval(()=>{if(!document.hidden)refresh();},300000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
 </script><script>// Updates open the project's public HTTPS page. The local file is never overwritten.
-function startReleaseCheck(release){
+function showReleaseNotes(text){
+  const box=document.getElementById('release-notes');
+  const body=document.createDocumentFragment();
+  let list=null,sections=0;
+  for(const line of text.split(/\r?\n/)){
+    if(line.startsWith('## ')){
+      if(++sections>6)break;
+      const heading=document.createElement('h3');heading.textContent=line.slice(3);
+      list=document.createElement('ul');body.append(heading,list);
+    }else if(list && line.startsWith('- ')){
+      const item=document.createElement('li');item.textContent=line.slice(2);list.append(item);
+    }
+  }
+  if(sections)box.replaceChildren(body);
+}
+function startReleaseCheck(release,bundledNotes){
   const site=new URL('https://jinyuany.github.io/hex-aram-cn/');
   const status=document.getElementById('release-check-status');
   const button=document.getElementById('release-check');
   const versionNode=document.getElementById('release-number');
-  versionNode.textContent=release.build.slice(0,8);
+  versionNode.textContent='v'+release.version;
+  versionNode.title='构建 '+release.build.slice(0,8);
+  showReleaseNotes(bundledNotes);
+  if(location.hash==='#updates')document.getElementById('updates').open=true;
+  let lastNotes=bundledNotes;
   let inProgress=false;
+  async function refreshNotes(){
+    try{
+      const url=new URL('https://raw.githubusercontent.com/JINYUANY/hex-aram-cn/main/CHANGELOG.md');
+      url.searchParams.set('t',String(Date.now()));
+      const response=await fetch(url,{credentials:'omit',cache:'no-store',redirect:'error',referrerPolicy:'no-referrer',signal:AbortSignal.timeout(8000)});
+      if(!response.ok)return;
+      const text=await response.text();
+      if(text.length<100000 && text!==lastNotes && /^## .+/m.test(text)){showReleaseNotes(text);lastNotes=text;}
+    }catch{/* The bundled or last successfully loaded notices stay readable offline. */}
+  }
   async function check(){
     if(inProgress || document.hidden)return;
     inProgress=true;
     button.disabled=true;
+    status.textContent='正在检查程序更新…';
+    void refreshNotes();
     try{
       const url=new URL('version.json',site);
       url.searchParams.set('t',String(Date.now()));
@@ -2763,7 +2804,7 @@ function startReleaseCheck(release){
       if(!response.ok)throw new Error('unavailable');
       const published=await response.json();
       if(published.project!=='hex-aram-cn' || !/^[a-f0-9]{64}$/.test(published.build) || !Number.isSafeInteger(published.builtAt))throw new Error('invalid release');
-      if(published.build===release.build){status.textContent='已与公开发布版同步';return;}
+      if(published.build===release.build){status.textContent='已是最新公开版 v'+release.version;return;}
       if(published.builtAt<=release.builtAt){status.textContent='当前副本较新，等待公开版发布';return;}
       const next=new URL(site);
       next.searchParams.set('v',published.build);
@@ -2783,4 +2824,4 @@ function startReleaseCheck(release){
   void check();
 }
 
-startReleaseCheck({"project":"hex-aram-cn","build":"186874b08a507e5ae6d83ef94b3c15e1d813f56e21c08ab907482b68fde93542","builtAt":1795245466678});</script></body></html>
+startReleaseCheck({"project":"hex-aram-cn","version":"1.1.0","build":"269af0a522fc2a224d047fc63a90cc04ede6c8683c2d5d47dc9592946d8f6e15","builtAt":1795245774036},"# 海克斯战局更新公告\n\n## 1.1.0 · 2026-11-21\n\n- 首页和英雄页增加「检查新版」，可核对当前程序版本、打开在线版并下载最新离线包。\n- 新增站内更新公告；维护者可以直接在 GitHub 修改本文件。已经打开的页面会在下一次成功检查时读取公告。\n- 项目首页加入图文教程，演示英雄排名、技能强化、海克斯搭配和版本检查。\n\n## 1.0.0 · 2026-11-21\n\n- 发布国服海克斯大乱斗免安装图鉴，提供在线查询和可直接分享的离线 ZIP。\n- 收录英雄、技能、海克斯与装备资料，统计明细保留来源、版本、场数和截止时间。\n- 下载版可以检查更新，发现新版后在浏览器中打开最新公开版。\n");</script></body></html>
