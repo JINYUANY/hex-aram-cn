@@ -10,13 +10,13 @@
 | AramHex 新样本 | 查询页按上游发布清单取得固定批次 | 校验模式、版本、样本窗口与分母后替换统计。部分装备表可能沿用上一版 |
 | 英雄、技能、装备、海克斯资料 | 数据适配器及浏览器按样本对应的版本取源 | 资料迟于样本时可在同一批次补齐；来源错误保留可核验的内容 |
 | ARAMGG | 公开清单免密钥；授权榜单由维护者的服务请求 | 云端只发布经过校验的国服英雄统计。三强化明细由有密钥的自托管服务按需读取 |
-| 程序功能或手工核对的专项资料 | 维护者发布程序及更新公告 | 在线页换新；使用旧 ZIP 的玩家可检查新版或重新下载 |
+| 程序功能或手工核对的专项资料 | 维护者发布程序及更新公告 | 联网打开时发现新版会自动进入新页面。在线版缓存完整性校验通过的程序供离线使用 |
 
 根目录为可直接发布的成品。项目源文件在 [源码 ZIP](https://github.com/JINYUANY/hex-aram-cn/raw/refs/heads/main/hex-aram-cn-source.zip) 内。游戏公告、新批次统计接入后能独立于程序版本更新。
 
 ## 云端采集与状态
 
-GitHub Actions 工作流 `.github/workflows/sync-data.yml` 在 main 分支运行。每小时的第 7、22、37 和 52 分钟计划触发，更新源码包或工作流也会触发。手动重查请在 Actions 中打开 **Sync CN game data → Run workflow**。页面里的同步按钮读取已发布的公告快照，不能触发维护者的 GitHub 任务。
+GitHub Actions 工作流 `.github/workflows/sync-data.yml` 在 main 分支运行。每小时的第 7、22、37 和 52 分钟计划触发，更新源码包或工作流也会触发。手动重查请在 Actions 中打开 **Sync CN game data → Run workflow**。页面里的同步按钮并行核对腾讯官网新闻目录与已发布的公告快照。前者通过官网使用的 JSONP 接口运行在隔离框架里，后者补齐正文和模式资料。
 
 采集脚本检查腾讯公告、热修，维护分玩法的英雄平衡记录；有已配置的授权来源时一并读取。数据变化立即写入；仅检查时间变化时最多每四小时提交一次。遇到部分来源出错，工作流可先发布通过校验的内容，再用红色运行状态提示检查失败。手动点同步会同时核对 GitHub Raw 和 Contents 两个镜像，按公告版本、成功采集时间取较新的内容。热修链接暂时打不开时，其正文会标记待重试。核对 `live-data.json` 中的版本、各栏来源与时间，比只看提交时间准确。
 
@@ -37,6 +37,10 @@ GitHub Actions 工作流 `.github/workflows/sync-data.yml` 在 main 分支运行
 - `HERO_POOL_URL` 填在 Actions 的 **Variables** 或自托管环境。只接受有权公开的 HTTPS 规则数据，按国服、普通模式、精确客户端版本匹配。结构、必填来源及完整性校验见源码 `src/hero-pool.mjs` 与 `test/hero-pool.test.mjs`。空表可表达尚无证据。
 - 自托管的已核验组合由 `src/augment-pairs.mjs` 校验。需要同英雄、同模式、同版本、实际同局的汇总场数和来源。持有次数、三枚组合子集不能替代精确两枚场数。
 
+### 有公开双枚样本时
+
+网页版和免安装版共用 `live-data.json` 的可选 `pairSamples` 数组。每批填写 `schema: 1`、`measure: "same-player-final-augment-pair"`、`region: "CN"`、`mode: "normal"`、客户端版本 `patch`、字符串英雄 ID `heroId`、含时区的实际样本截止时间 `cutoff`、`coverage`（`partial` 或 `complete`）以及来源名称与 HTTPS 原表地址 `source: {name, url}`。每行 `rows` 有两个不同的字符串 ID（`augmentIds`）和正整数场数 `games`。可选的 `heroGames` 为同批英雄分母。应先核实数据的公开授权和实际统计口径。采集脚本会保留已核验样本，玩家可在第一枚详情点击「重新核对组合数据」。未取得来源时省略该数组。
+
 ## 本地运行、测试和打包
 
 解压源码，在包含 `package.json` 的目录运行。构建使用 Node.js 22 或更高版本和 Python 3。
@@ -53,7 +57,7 @@ python3 scripts/package-download.py
 
 1. 改动程序时提高 `app-release.json` 中的版本号，在 `CHANGELOG.md` 顶部写入日期和玩家能感受到的变化。单独维护公告时可直接更新公开仓库的同名文件。
 2. 跑测试并构建。确认在线版、下载版都能从英雄榜进入详情和搭配，离线也可查看内置样本；点击同步核对各张表的版本和来源。
-3. 将 `dist/publish/` 的成品一起提交到公开仓库 main 根目录。程序、`version.json`、公告和两份 ZIP 应来自同一次构建。云端负责写入 `live-data.json`。
+3. 将 `dist/publish/` 的成品一起提交到公开仓库 main 根目录。程序、`offline-worker.js`、`version.json`、公告和两份 ZIP 应来自同一次构建。云端负责写入 `live-data.json`。
 4. 在 GitHub Releases 给对应提交打版本标签，把 `hex-aram-cn.zip` 作为同名附件发布。首页的固定下载链接指向最新正式 Release 的该附件。
 5. 在无登录浏览器检查在线页、下载附件和程序更新；在 Actions 核对 Pages 部署与云端数据采集各自的结果。
 
