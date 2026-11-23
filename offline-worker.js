@@ -1,6 +1,6 @@
 // The build substitutes these constants after the self-contained HTML is finalized.
-const build='8610e7bd3691361727e3d77d4e0b34747270cd87d59f44204ead182f045832a6';
-const checksum='5cc26706819bec4c03e0e9f97eaac635e52902cc158907b1cc95ee62d7f5972d';
+const build='416295d2d76308e604e3f5fd1d844ac3ed74f0e87ba7148c948dd2f0ba94617d';
+const checksum='f5aaae926669203ac29828f805ab6cae4af7cc7bde94173c4e6f6eb10ef7bee8';
 const root=new URL('./',self.location.href).href;
 const prefix='hex-aram-cn/program/'+new URL(root).pathname+'/';
 const current=prefix+build;
